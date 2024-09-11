@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Electro - HTML Ecommerce Template</title>
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="css/slick.css"/>
+    <link type="text/css" rel="stylesheet" href="css/slick-theme.css"/>
+
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- Custom stylesheet -->
+    <link type="text/css" rel="stylesheet" href="css/style.css"/>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <form action="/checkout/save" method="post">
+        <div class="container" th:each="items : ${cartItems}">
+            <!-- Hidden cartId field -->
+            <input type="text" th:value="${items.getCart().getCartId()}" name="cartId"/>
+
+            <div class="row">
+                <div class="col-md-5">
+                    <!-- Billing Details -->
+                    <div class="billing-details">
+                        <div class="section-title">
+                            <h3 class="title">Địa Chỉ Giao Hàng</h3>
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="text" name="firstName" placeholder="Ho"/>
+                            <p class="text-danger"></p>
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="text" name="lastName" placeholder="Ten"/>
+                            <p class="text-danger"></p>
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="tel" name="phone" placeholder="Số điện thoại người nhận"/>
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="text" name="email" placeholder="Email người nhận"/>
+                        </div>
+                        <div class="form-group">
+                            <select id="tinh" class="w-100 form-select" name="city">
+                                <option value="">Chọn tỉnh thành</option>
+                            </select>
+                            <input type="hidden" id="selectedTinhName" name="city" class="w-100 form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <select id="huyen" class="form-select" name="province">
+                                <option value="">Chọn quận huyện</option>
+                            </select>
+                            <input type="hidden" id="selectHuyenName" name="province" class="w-100 form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <select id="xa" name="country" class="form-select">
+                                <option value="">Chọn phường xã</option>
+                            </select>
+                            <input type="hidden" id="selectedXaName" name="country" class="w-100 form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="text" name="specificAddress" placeholder="Địa chỉ cụ thể"/>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Details -->
+                <div class="col-md-7 order-details">
+                    <div class="section-title text-center">
+                        <h3 class="title">Đơn hàng của bạn</h3>
+                    </div>
+                    <div class="payment-method">
+                        <div><strong>Phương thức thanh toán</strong></div>
+                        <div class="input-radio">
+                            <input type="radio" name="payment" id="payment-1" checked>
+                            <label for="payment-1">
+                                <span></span>
+                                Thanh toán trực tiếp bằng tiền mặt
+                            </label>
+                            <div class="caption">
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="primary-btn order-submit">Xác nhận đặt hàng</button>
+                </div>
+                <!-- /Order Details -->
+            </div>
+            <!-- /row -->
+        </div>
+    </form>
+    <!-- /container -->
+</div>
+<!-- /SECTION -->
+
+<!-- jQuery Plugins -->
+<script src="https://esgoo.net/scripts/jquery.js"></script>
+<script th:src="@{./js/main.js}"></script>
+</body>
+
+</html>

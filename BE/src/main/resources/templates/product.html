@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{./css/style.css}"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-4 bootstrap snippets bootdeys" th:each="items : ${products}">
+            <!-- product -->
+
+
+            <div class="product-content product-wrap clearfix">
+                <div class="row">
+                    <div class="col-md-5 col-sm-12 col-xs-12">
+                        <div class="product-image">
+                            <img
+                                    src="https://www.bootdey.com/image/194x228/87CEFA"
+                                    alt="194x228"
+                                    class="img-responsive"
+                            />
+                            <span class="tag2 hot"> HOT </span>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-12 col-xs-12">
+                        <div class="product-deatil">
+                            <h5 class="name">
+                                <a href="#" th:text="${items.getProductName()}">
+                                    <span>Category</span>
+                                </a>
+                            </h5>
+                            <p class="price-container">
+                                <span th:text="${items.getPrice()}"></span>
+                            </p>
+                            <span class="tag1"></span>
+                        </div>
+                        <div class="description">
+                            <p>Proin in ullamcorper lorem. Maecenas eu ipsum</p>
+                        </div>
+                        <div class="product-info smart-form">
+                            <div class="row">
+                                <div class="col-md-8 col-sm-6 col-xs-6">
+                                    <form action="/product/add-to-cart" method="POST">
+                                        <input type="hidden" name="quantity" value="1">
+                                        <input type="hidden" name="productId" th:value="${items.getProductId()}">
+                                        <button type="submit" class="btn btn-success"
+                                        >Add to cart
+                                        </button
+                                        >
+                                    </form>
+                                </div>
+
+                                <div class="rating d-flex flex-row-reverse">
+                                    <label><i class="bi bi-star-fill text-danger"></i
+                                    ></label>
+                                    <label
+                                    ><i class="bi bi-star-fill"></i
+                                    ></label>
+                                    <label
+                                    ><i class="bi bi-star-fill"></i
+                                    ></label>
+                                    <label
+                                    ><i class="bi bi-star-fill"></i
+                                    ></label>
+                                    <label
+                                    ><i class="bi bi-star-fill"></i
+                                    ></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- end product -->
+        </div>
+
+    </div>
+</div>
+<script th:src="@{./js/bootstrap.bundle.js}"></script>
+<script th:src="@{./js/bootstrap.min.js}"></script>
+</body>
+</html>
