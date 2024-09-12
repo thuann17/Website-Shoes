@@ -9,20 +9,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Table(name="Cart_Items")
+@Table(name = "Cart_Items")
 public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int cartItemId;
-    private int quantity;
-    private double price;
-    private double totalAmount;
+    int cartItemId;
+    int quantity;
+    double price;
+    double totalAmount;
 
     @ManyToOne
     @JoinColumn(name = "cartId")
-    private Cart cart;
+    Cart cart;
 
     @ManyToOne
-    @JoinColumn(name = "productId")
-    private Product product;
+    @JoinColumn(name = "productDetailId")
+    ProductDetail productDetail;
 }

@@ -7,24 +7,16 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name= "products")
+@Table(name = "Products")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int productId;
-    private String productName;
-    private double price;
-    private int quantity;
-    private String imageUrl;
-    private String desciption;
-    private String status;
+    int productId;
+    String productName;
+    String desciption;
+    String status;
 
     @OneToMany(mappedBy = "product")
-    private List<ProductDetail> productDetail;
+     List<ProductDetail> productDetail;
 
-    @OneToMany(mappedBy = "product")
-    private  List<CartItem> cartItems;
-
-    @OneToMany(mappedBy = "products")
-    private  List<OrderItem> orderItems;
 }

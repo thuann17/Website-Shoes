@@ -34,7 +34,6 @@ public class OrderService {
             Cart cart = cartOptional.get();
             Order order = new Order();
             order.setPhone(phone);
-            order.setEmail(email);
             order.setCity(city);
             order.setProvince(province);
             order.setCountry(country);
@@ -51,7 +50,7 @@ public class OrderService {
             for (CartItem cartItem : cartItems) {
                 OrderItem orderItem = new OrderItem();
                 orderItem.setOrders(order);
-                orderItem.setProducts(cartItem.getProduct());
+                orderItem.setProductDetail(cartItem.getProductDetail());
                 orderItem.setQuantity(cartItem.getQuantity());
                 orderItem.setPrice(cartItem.getPrice());
                 orderItemRepository.save(orderItem);

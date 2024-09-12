@@ -13,21 +13,21 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Data
-@Table(name="Carts")
+@Table(name = "Carts")
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int cartId;
-    private String status;
-    private Date createdAt;
-    private Date updatedAt;
+    int cartId;
+    String status;
+    Date createdAt;
+    Date updatedAt;
 
     @ManyToOne
     @JoinColumn(name = "username")
-    private User user;
+    User user;
 
     @OneToMany(mappedBy = "cart")
-    private List<CartItem> cartItems;
+    List<CartItem> cartItems;
 
     @OneToMany(mappedBy = "carts")
     private List<Order> orders;

@@ -13,6 +13,7 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int roleId;
     String roleName;
+
     @OneToMany(mappedBy = "role",fetch = FetchType.EAGER)
     List<UserRole> userRole;
 }
